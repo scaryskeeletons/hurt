@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>hurt - imaybesickinthehead</title>
+    <meta name="title" content="hurt - imaybesickinthehead">
+    <meta name="description" content="Welcome to my reality. Or is it yours? Enter if you dare...">
+    <meta name="keywords" content="sick, horror, creepy, psychological horror">
+    <meta name="author" content="imaybesickinthehead">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://imaybesickinthehead.com/">
+    <meta property="og:title" content="hurt - imaybesickinthehead">
+    <meta property="og:description" content="Welcome to my reality. Or is it yours? Enter if you dare...">
+    <meta property="og:image" content="public/hurt.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://imaybesickinthehead.com/">
+    <meta property="twitter:title" content="hurt - imaybesickinthehead">
+    <meta property="twitter:description" content="Welcome to my reality. Or is it yours? Enter if you dare...">
+    <meta property="twitter:image" content="public/preview.jpg">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="public/favicon.ico">
+    <link rel="manifest" href="public/site.webmanifest">
+    <link rel="mask-icon" href="public/favicon/safari-pinned-tab.svg" color="#ff0000">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="public/audio.mp3" as="audio">
+    <link rel="preload" href="public/drip.mp3" as="audio">
+    <link rel="preload" href="public/hurt.jpg" as="image">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="public/index.css">
+</head>
+<body>
+    <div class="static"></div>
+    
+    <!-- Enter Section -->
+    <div id="enterSection" class="enter-section">
+        <h1 class="enter-title">ENTER IF YOU DARE</h1>
+        <button id="enterBtn" class="enter-button">ENTER</button>
+        <audio id="bgAudio" loop>
+            <source src="public/audio.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="container hidden">
+        <h1 class="glitch-title blood-drip-bottom">hurt</h1>
+        
+        <div class="portrait">
+            <img src="public/hurt.jpg" alt="imaybesickinthehead portrait">
+        </div>
+
+        <div class="social-buttons">
+            <button class="glow-button" onclick="window.open('https://x.com/intent/post?text=i+may+be+sick+in+the+head+but+im+not+sure', '_blank')">
+                <img src="public/twitter.png" alt="Twitter">
+                Twitter
+            </button>
+            <button class="glow-button" onclick="window.open('https://t.me/imaybesickinthehead', '_blank')">
+                <img src="public/telegram.png" alt="Telegram">
+                Telegram
+            </button>
+            <button class="glow-button" onclick="window.open('https://pump.fun/', '_blank')">
+                <img src="public/chart.png" alt="Chart">
+                Chart
+            </button>
+            <button class="glow-button" id="copyAddress">
+                <img src="public/copy.png" alt="Copy">
+                Copy Contract
+            </button>
+        </div>
+
+        <div class="bio">
+            <p>They call me sick in the head... </p>
+            <p>The voices won't stop. They echo through the corridors of my mind, day and night. Sometimes they whisper, sometimes they scream, but they're always there. Always watching. Always waiting.</p>
+            <p>The doctors say I'm getting better, but how can they know? They can't see what I see. They can't hear what I hear. The shadows on the walls... they move when no one's looking.</p>
+            <p>Welcome to my reality. Or is it yours?</p>
+            <p>↯↯↯ SYSTEM_ERROR_666 ↯↯↯</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initAudio, scheduleNextDrip, initBackgroundMusic } from './public/audio.js';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initBackgroundMusic();
+
+            // Initialize audio on first user interaction
+            const startAudio = async () => {
+                await initAudio();
+                scheduleNextDrip();
+                document.removeEventListener('click', startAudio);
+            };
+            
+            document.addEventListener('click', startAudio);
+
+            // Enter button handler
+            document.getElementById('enterBtn').addEventListener('click', function() {
+                const bgAudio = document.getElementById('bgAudio');
+                if (bgAudio) bgAudio.play();
+                
+                const enterSection = document.getElementById('enterSection');
+                const mainContent = document.getElementById('mainContent');
+                
+                if (enterSection) {
+                    enterSection.style.animation = 'fadeOut 1s forwards';
+                    setTimeout(() => {
+                        enterSection.style.display = 'none';
+                        if (mainContent) {
+                            mainContent.classList.remove('hidden');
+                            mainContent.style.animation = 'fadeIn 1s forwards';
+                        }
+                    }, 1000);
+                }
+            });
+
+            // Copy address handler
+            document.getElementById('copyAddress').addEventListener('click', function() {
+                navigator.clipboard.writeText('0x00000000000000000000');
+                this.innerHTML = '<img src="public/copy.png" alt="Copy">Copied!';
+                setTimeout(() => {
+                    this.innerHTML = '<img src="public/copy.png" alt="Copy">Copy Contract';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

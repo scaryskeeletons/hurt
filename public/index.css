@@ -1,0 +1,245 @@
+/* Reset and Base Styles */
+body {
+    background-color: #000;
+    color: #ff0000;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    animation: darkFlicker 4s infinite;
+    background-image: url("./background.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Enter Section Styles */
+.enter-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    z-index: 1000;
+}
+
+.enter-title {
+    color: #ff0000;
+    font-size: 3em;
+    text-shadow: 0 0 10px #ff0000,
+                 0 0 20px #ff0000,
+                 0 0 30px #ff0000;
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+.enter-button {
+    background: #000;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-top: 30px;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 5px #ff0000;
+    box-shadow: 0 0 10px #ff0000;
+    transition: all 0.3s ease;
+}
+
+.enter-button:hover {
+    background: #ff0000;
+    color: #000;
+    box-shadow: 0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ff0000;
+}
+
+/* Main Content Styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Title Styles */
+.glitch-title {
+    font-size: 4em;
+    text-shadow: 2px 2px #000,
+                 -2px -2px #0ff,
+                 2px -2px #f0f,
+                 0 0 10px #ff0000,
+                 0 0 20px #ff0000,
+                 0 0 30px #ff0000;
+    margin: 20px 0;
+    animation: glitch 3s infinite, textGlow 2s ease-in-out infinite;
+}
+
+/* Portrait Styles */
+.portrait {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    border: 3px solid #ff0000;
+    margin: 20px auto;
+    overflow: hidden;
+    box-shadow: 0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ff0000;
+    animation: pulse 2s infinite;
+}
+
+.portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.glow-button {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #ff0000;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.glow-button img {
+    width: 20px;
+    height: 20px;
+    filter: invert(12%) sepia(100%) saturate(6449%) hue-rotate(0deg) brightness(116%) contrast(115%);
+}
+
+.glow-button:hover {
+    background: #ff0000;
+    color: #000;
+    box-shadow: 0 0 20px #ff0000,
+                0 0 30px #ff0000,
+                0 0 40px #ff0000;
+}
+
+.glow-button:hover img {
+    filter: invert(100%);
+}
+
+/* Bio Section Styles */
+.bio {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 1px solid #ff0000;
+    text-shadow: 0 0 5px #ff0000,
+                 0 0 10px #ff0000;
+    animation: textPulse 3s infinite;
+}
+
+/* Static Overlay */
+.static {
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA7bWtVwAAAAJ0Uk5T/wDltzBKAAAAQklEQVQ4je2RMQ4AIAgD6f8P9UYTBSmsHUw8tLlkKdSpUqVKv1SLUOquIh5LQ2AEgXLBw5mpnSj0Zm4gZuZs/zns1gML4gEG6M7MLAAAAABJRU5ErkJggg==');
+    animation: staticFlicker 0.2s infinite;
+}
+
+/* Animation Keyframes */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes darkFlicker {
+    0% { background-color: rgba(0, 0, 0, 1); }
+    45% { background-color: rgba(0, 0, 0, 0.9); }
+    50% { background-color: rgba(0, 0, 0, 0.8); }
+    55% { background-color: rgba(0, 0, 0, 0.9); }
+    100% { background-color: rgba(0, 0, 0, 1); }
+}
+
+@keyframes staticFlicker {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.15; }
+    100% { opacity: 0.1; }
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 10px #ff0000,
+                      0 0 20px #ff0000,
+                      0 0 30px #ff0000; }
+    50% { text-shadow: 0 0 20px #ff0000,
+                       0 0 30px #ff0000,
+                       0 0 40px #ff0000; }
+    100% { text-shadow: 0 0 10px #ff0000,
+                        0 0 20px #ff0000,
+                        0 0 30px #ff0000; }
+}
+
+@keyframes textPulse {
+    0% { text-shadow: 0 0 5px #ff0000,
+                      0 0 10px #ff0000; }
+    50% { text-shadow: 0 0 10px #ff0000,
+                       0 0 20px #ff0000; }
+    100% { text-shadow: 0 0 5px #ff0000,
+                        0 0 10px #ff0000; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px #ff0000,
+                     0 0 30px #ff0000,
+                     0 0 40px #ff0000; }
+    50% { box-shadow: 0 0 30px #ff0000,
+                      0 0 40px #ff0000,
+                      0 0 50px #ff0000; }
+    100% { box-shadow: 0 0 20px #ff0000,
+                       0 0 30px #ff0000,
+                       0 0 40px #ff0000; }
+}
